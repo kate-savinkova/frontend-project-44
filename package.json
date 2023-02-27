@@ -10,10 +10,14 @@
     "type": "git",
     "url": "git+https://github.com/kate-savinkova/frontend-project-44.git"
   },
+  "type": "module",
   "author": "",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/kate-savinkova/frontend-project-44/issues"
+  },
+  "bin": {
+    "brain-games": "bin/brain-games.js"
   },
   "homepage": "https://github.com/kate-savinkova/frontend-project-44#readme"
 }
