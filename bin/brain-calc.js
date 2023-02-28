@@ -1,4 +1,4 @@
 #!/usr/bin/env node
 import { algorithm } from "../src/index.js";
 
-algorithm('brain-even');
+algorithm('brain-calc');
