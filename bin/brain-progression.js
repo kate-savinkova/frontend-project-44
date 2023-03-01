@@ -1,36 +1,30 @@
 #!/usr/bin/env node
-import { introducing } from "../src/index.js";
-import readlineSync from 'readline-sync';
+import { introducing, end } from '../src/index.js';
 
 const name = introducing('brain-progression');
-let correct, count = 0;
-for (let i = 0; i < 3; i++) {
-    let col = Math.floor(Math.random() * 10) + 5;
-    let missing = Math.floor(Math.random() * col) + 1;
-    let first = Math.floor(Math.random() * 100);
-    let step = Math.floor(Math.random() * 5) + 1;
-    let s = '';
-    for (let i = 1; i <= col; i++) {
-        if (i !== missing) {
-            s += first + ' ';
-        } else {
-            s += '.. ';
-            correct = first;
-        }
-        first += step;
-    }
-    console.log(`Question: ${s}`);
-    const userAns = readlineSync.question('Your answer: ');
-    if (userAns == correct) {
-        console.log('Correct!');
-        count += 1;
+let correct;
+const count = 0;
+for (let i = 0; i < 3; i += 1) {
+  const col = Math.floor(Math.random() * 10) + 5;
+  const missing = Math.floor(Math.random() * col) + 1;
+  let first = Math.floor(Math.random() * 100);
+  const step = Math.floor(Math.random() * 5) + 1;
+  let s = '';
+  for (let j = 1; j <= col; j += 1) {
+    if (j !== missing) {
+      s += `${first} `;
     } else {
-        console.log(`'${userAns}' is wrong answer ;(. Correct answer was '${correct}'.`);
-        console.log(`Let's try again, ${name}!`);
-        break;
+      s += '.. ';
+      correct = first;
     }
+    first += step;
+  }
+  console.log(`Question: ${s}`);
+  const res = end(correct, name, count);
+  if (res === 0) {
+    break;
+  }
 }
 if (count === 3) {
-    console.log(`Congratulations, ${name}!`);
+  console.log(`Congratulations, ${name}!`);
 }
-
