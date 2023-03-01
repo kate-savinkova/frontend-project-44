@@ -18,6 +18,9 @@ export const algorithm = (typeOfGame) => {
         case 'brain-progression':
             console.log('What number is missing in the progression?');
             break;
+        case 'brain-prime':
+            console.log('Answer "yes" if given number is prime. Otherwise answer "no".');
+            break;
     }
     let correct, count = 0;
     for (let i = 0; i < 3; i++) {
@@ -80,6 +83,17 @@ export const algorithm = (typeOfGame) => {
                     first += step;
                 }
                 console.log(`Question: ${s}`);
+                break;
+            case 'brain-prime':
+                correct = 'yes';
+                console.log(`Question: ${randomNum1}`);
+                for (let i = 2; i <= randomNum1 / 2; i++) {
+                    if (randomNum1 % i === 0) {
+                        correct = 'no';
+                        break;
+                    }
+                }
+                break;
         }
         const userAns = readlineSync.question('Your answer: ');
         if (userAns == correct) {
