@@ -15,6 +15,9 @@ export const algorithm = (typeOfGame) => {
         case 'brain-gcd':
             console.log('Find the greatest common divisor of given numbers.');
             break;
+        case 'brain-progression':
+            console.log('What number is missing in the progression?');
+            break;
     }
     let correct, count = 0;
     for (let i = 0; i < 3; i++) {
@@ -61,6 +64,22 @@ export const algorithm = (typeOfGame) => {
                     }
                 }
                 break;
+            case 'brain-progression':
+                let col = Math.floor(Math.random() * 10) + 5;
+                let missing = Math.floor(Math.random() * col) + 1;
+                let first = Math.floor(Math.random() * 100);
+                let step = Math.floor(Math.random() * 5) + 1;
+                let s = '';
+                for (let i = 1; i <= col; i++) {
+                    if (i !== missing) {
+                        s += first + ' ';
+                    } else {
+                        s += '.. ';
+                        correct = first;
+                    }
+                    first += step;
+                }
+                console.log(`Question: ${s}`);
         }
         const userAns = readlineSync.question('Your answer: ');
         if (userAns == correct) {
