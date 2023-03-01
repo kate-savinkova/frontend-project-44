@@ -3,7 +3,7 @@ import { introducing, end } from '../src/index.js';
 
 const name = introducing('brain-calc');
 let correct;
-const count = 0;
+let count = 0;
 for (let i = 0; i < 3; i += 1) {
   const randomNum1 = Math.floor(Math.random() * 10) + 1;
   const randomNum2 = Math.floor(Math.random() * 10) + 1;
@@ -22,9 +22,11 @@ for (let i = 0; i < 3; i += 1) {
       correct = randomNum1 * randomNum2;
       break;
   }
-  const res = end(correct, name, count);
+  let res = end(correct, name, count);
   if (res === 0) {
     break;
+  } else {
+    count = res;
   }
 }
 if (count === 3) {
