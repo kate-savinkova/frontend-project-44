@@ -1,6 +1,5 @@
 #!/usr/bin/env node
-import { introducing } from "../src/index.js";
-import readlineSync from 'readline-sync';
+import { introducing, end } from "../src/index.js";
 
 const name = introducing('brain-gcd');
 let correct, count = 0;
@@ -20,13 +19,8 @@ for (let i = 0; i < 3; i++) {
             break;
         }
     }
-    const userAns = readlineSync.question('Your answer: ');
-    if (userAns == correct) {
-        console.log('Correct!');
-        count += 1;
-    } else {
-        console.log(`'${userAns}' is wrong answer ;(. Correct answer was '${correct}'.`);
-        console.log(`Let's try again, ${name}!`);
+    const res = end(correct, name, count);
+    if (res === 0) {
         break;
     }
 }

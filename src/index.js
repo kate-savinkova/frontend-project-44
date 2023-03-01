@@ -24,4 +24,17 @@ export const introducing = (typeOfGame) => {
     }
     return name;
 }
+
+export const end = (correct, name, count) => {
+    const userAns = readlineSync.question('Your answer: ');
+    if (userAns == correct) {
+        console.log('Correct!');
+        count += 1;
+    } else {
+        console.log(`'${userAns}' is wrong answer ;(. Correct answer was '${correct}'.`);
+        console.log(`Let's try again, ${name}!`);
+        count = 0;
+    }
+    return count;
+}
 export default cli;

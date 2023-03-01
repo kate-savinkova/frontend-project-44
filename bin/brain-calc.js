@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { introducing } from "../src/index.js";
+import { introducing, end } from "../src/index.js";
 import readlineSync from 'readline-sync';
 
 const name = introducing('brain-calc');
@@ -22,13 +22,8 @@ for (let i = 0; i < 3; i++) {
             correct = randomNum1 * randomNum2;
             break;
     }
-    const userAns = readlineSync.question('Your answer: ');
-    if (userAns == correct) {
-        console.log('Correct!');
-        count += 1;
-    } else {
-        console.log(`'${userAns}' is wrong answer ;(. Correct answer was '${correct}'.`);
-        console.log(`Let's try again, ${name}!`);
+    const res = end(correct, name, count);
+    if (res === 0) {
         break;
     }
 }
