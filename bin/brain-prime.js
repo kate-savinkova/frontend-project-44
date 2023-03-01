@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-import { introducing, end } from '../../src/index.js';
+import { introducing, end } from '../src/index.js';
 
 const name = introducing('brain-prime');
 let correct;
