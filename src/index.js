@@ -29,13 +29,14 @@ export const introducing = (typeOfGame) => {
 
 export const end = (correct, name, count) => {
   const userAns = readlineSync.question('Your answer: ');
-  if (userAns == correct) {
+  let dop = count;
+  if (userAns === String(correct)) {
     console.log('Correct!');
-    count += 1;
+    dop += 1;
   } else {
     console.log(`'${userAns}' is wrong answer ;(. Correct answer was '${correct}'.`);
     console.log(`Let's try again, ${name}!`);
-    count = 0;
+    dop = 0;
   }
-  return count;
+  return dop;
 };
