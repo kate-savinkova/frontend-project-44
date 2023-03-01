@@ -14,7 +14,7 @@ for (let i = 0; i < 3; i += 1) {
       break;
     }
   }
-  let res = end(correct, name, count);
+  const res = end(correct, name, count);
   if (res === 0) {
     break;
   } else {
